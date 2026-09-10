@@ -310,21 +310,30 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(runOwlCycle, 2000);
 });
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. FITUR STRICT MOBILE BLOCKER (Blokir HP meski pakai Desktop Site)
-    // Mendeteksi User-Agent dari sistem operasi seluler
-    const isMobileDevice = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    // 1. FITUR STRICT MOBILE BLOCKER (Tahan terhadap "Mode Situs Desktop")
     
-    if (isMobileDevice) {
-        // Jika terdeteksi sebagai HP/Tablet, tambahkan class pemblokir paksa ke body
+    // A. Deteksi User-Agent (Untuk browser HP saat mode normal)
+    const isMobileUA = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    // B. Deteksi Dukungan Sentuhan (Hardware)
+    const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
+    
+    // C. Deteksi Lebar Layar Fisik Perangkat (Situs Desktop memalsukan innerWidth, tapi screen.width tetap asli)
+    const isSmallPhysicalScreen = Math.min(window.screen.width, window.screen.height) <= 1024;
+    
+    // LOGIKA BLOKIR KETAT: Jika terdeteksi sebagai HP dari User Agent, ATAU 
+    // terdeteksi memiliki layar sentuh dengan ukuran layar fisik kecil (Situs Desktop HP/Tablet)
+    if (isMobileUA || (isTouch && isSmallPhysicalScreen)) {
+        // Blokir website
         document.body.classList.add("force-block");
     } else {
-        // 2. FITUR POP-UP PENGUMUMAN NAVBAR (Hanya dieksekusi jika pengguna memakai Laptop/PC)
+        // 2. FITUR POP-UP PENGUMUMAN NAVBAR (Hanya dieksekusi murni di Laptop/PC)
         const announcementModal = document.getElementById("announcement-modal");
         const announcementClose = document.getElementById("announcement-close");
         const announcementOk = document.getElementById("announcement-ok");
 
         if (announcementModal) {
-            // Tampilkan modal pengumuman secara otomatis setelah web dimuat (delay 0.5 detik agar smooth)
+            // Tampilkan modal pengumuman secara otomatis setelah web dimuat (delay 0.5s)
             setTimeout(() => {
                 announcementModal.classList.add("show");
             }, 500);
