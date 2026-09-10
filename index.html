@@ -38,8 +38,8 @@
             <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 15px;">
                 Mohon maaf, situs web ini tidak dapat diakses menggunakan tampilan layar mobile biasa.
             </p>
-            <p style="color: var(--text-main); font-size: 1.1rem; font-weight: 600; margin-bottom: 25px;">
-                Silakan aktifkan <strong>"Mode Situs Desktop" (Desktop Site)</strong> pada pengaturan browser HP Anda untuk masuk ke website.
+           <p style="color: var(--text-main); font-size: 1.1rem; font-weight: 600; margin-bottom: 25px;">
+                Website ini hanya dapat diakses melalui <strong>Laptop atau PC</strong> karena versi mobile masih dalam tahap pengembangan.
             </p>
             <div style="background: rgba(132, 204, 22, 0.1); border: 1px solid var(--primary); padding: 15px; border-radius: 8px;">
                 <p style="color: var(--primary-dark); font-size: 0.95rem; font-weight: 600; margin: 0;">
@@ -159,6 +159,19 @@
                 </div>
                 
                 <button id="admin-submit" class="btn btn-primary btn-block" style="font-size: 1rem; padding: 0.8rem;">Oke</button>
+            </div>
+        </div>
+      <!-- MODAL PENGUMUMAN NAVBAR (Hanya Muncul di Laptop) -->
+        <div id="announcement-modal" class="modal-overlay">
+            <div class="modal-content simple-glow" style="max-width: 550px; padding: 2rem; position: relative; text-align: center;">
+                <button class="modal-close" id="announcement-close" style="top: 15px; right: 20px; color: var(--text-muted); font-size: 1.5rem; position: absolute;"><i class="fas fa-times"></i></button>
+                <div style="font-size: 3.5rem; color: #facc15; margin-bottom: 1rem;"><i class="fas fa-bullhorn"></i></div>
+                <h3 style="color: var(--primary-dark); font-size: 1.5rem; margin-bottom: 1rem;">Informasi Navigasi Website</h3>
+                <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 1.5rem; line-height: 1.6; text-align: justify;">
+                    Selamat datang! Perlu diketahui bahwa untuk saat ini, <strong>seluruh menu pada Navbar</strong> (seperti Mentari Cendekia, Siaga Tani, Sinergi Tani, Kembang Usaha, Bijak Usaha, Kolaborasi, Partisipasi, Desa Bejaten, dan Login Admin) <strong>hanya terintegrasi dan berfungsi penuh jika Anda berada di Halaman Utama Profil ini.</strong><br><br>
+                    Jika Anda sedang membuka halaman lain dan ingin beralih ke menu yang berbeda, silakan <strong>kembali terlebih dahulu ke halaman Utama Profil</strong>, lalu pilih menu yang Anda tuju melalui navbar.
+                </p>
+                <button id="announcement-ok" class="btn btn-primary btn-block" style="font-size: 1rem; padding: 0.8rem;">Saya Mengerti</button>
             </div>
         </div>
         <!-- HERO SECTION -->
