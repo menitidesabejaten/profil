@@ -340,3 +340,11 @@ footer { background-color: var(--footer-bg); color: var(--footer-text); padding:
 .force-block #mobile-blocker { display: flex !important; }
 .force-block { overflow: hidden !important; background: var(--bg-main) !important; }
 .force-block #main-website-content, .force-block #owl-system { display: none !important; }
+/* ================= CSS HARD BLOCKER (Situs Desktop Killer) ================= */
+/* Memblokir perangkat berbasis sentuhan jari dengan ukuran layar fisik kecil/menengah */
+@media (pointer: coarse) and (max-device-width: 1024px) {
+    #mobile-blocker { display: flex !important; }
+    body { overflow: hidden !important; background: var(--bg-main) !important; }
+    #main-website-content, #owl-system { display: none !important; }
+    #announcement-modal { display: none !important; } /* Sembunyikan paksa pop-up PC di HP */
+}
