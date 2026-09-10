@@ -309,3 +309,41 @@ document.addEventListener("DOMContentLoaded", () => {
     // Mulai siklus
     setTimeout(runOwlCycle, 2000);
 });
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. FITUR STRICT MOBILE BLOCKER (Blokir HP meski pakai Desktop Site)
+    // Mendeteksi User-Agent dari sistem operasi seluler
+    const isMobileDevice = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobileDevice) {
+        // Jika terdeteksi sebagai HP/Tablet, tambahkan class pemblokir paksa ke body
+        document.body.classList.add("force-block");
+    } else {
+        // 2. FITUR POP-UP PENGUMUMAN NAVBAR (Hanya dieksekusi jika pengguna memakai Laptop/PC)
+        const announcementModal = document.getElementById("announcement-modal");
+        const announcementClose = document.getElementById("announcement-close");
+        const announcementOk = document.getElementById("announcement-ok");
+
+        if (announcementModal) {
+            // Tampilkan modal pengumuman secara otomatis setelah web dimuat (delay 0.5 detik agar smooth)
+            setTimeout(() => {
+                announcementModal.classList.add("show");
+            }, 500);
+
+            // Fungsi untuk menutup modal
+            const closeAnnouncement = () => {
+                announcementModal.classList.remove("show");
+            };
+
+            // Event listener tombol tutup (X) dan tombol "Saya Mengerti"
+            announcementClose.addEventListener("click", closeAnnouncement);
+            announcementOk.addEventListener("click", closeAnnouncement);
+            
+            // Tutup jika area di luar kotak modal diklik
+            window.addEventListener("click", (e) => {
+                if (e.target === announcementModal) {
+                    closeAnnouncement();
+                }
+            });
+        }
+    }
+});
