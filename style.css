@@ -336,3 +336,7 @@ footer { background-color: var(--footer-bg); color: var(--footer-text); padding:
     .modal-header-panel { padding: 1.2rem 1.5rem; }
     .modal-body-content { padding: 1rem 1.5rem 2rem; }
 }
+/* ================= FORCE MOBILE BLOCKER (JS TRIGGERED) ================= */
+.force-block #mobile-blocker { display: flex !important; }
+.force-block { overflow: hidden !important; background: var(--bg-main) !important; }
+.force-block #main-website-content, .force-block #owl-system { display: none !important; }
